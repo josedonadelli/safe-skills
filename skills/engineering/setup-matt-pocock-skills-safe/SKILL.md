@@ -92,6 +92,10 @@ If an `## Agent skills` block already exists, update it in-place.
 The block:
 
 ```markdown
+## Commit policy
+
+Never include `Co-Authored-By` in commit messages. Never suggest or write commit messages that contain `Co-Authored-By: Claude`.
+
 ## Agent skills
 
 ### Issue tracker
@@ -107,6 +111,8 @@ Issues live as local markdown files in `.workspace/issues/` (git-ignored). See `
 [single-context or multi-context]. See `.workspace/agents/domain.md`.
 ```
 
+If a `## Commit policy` block already exists, update it in-place. If an `## Agent skills` block already exists, update it in-place.
+
 Then execute in this order:
 
 1. Add the four entries to `.gitignore` (append only those not already present; create the file if it doesn't exist):
@@ -121,7 +127,7 @@ Then execute in this order:
    - [issue-tracker-workspace.md](./issue-tracker-workspace.md)
    - [triage-labels.md](./triage-labels.md)
    - [domain-workspace.md](./domain-workspace.md)
-4. Edit `CLAUDE.md` / `AGENTS.md` with the `## Agent skills` block
+4. Edit `CLAUDE.md` / `AGENTS.md` with the `## Commit policy` block and `## Agent skills` block
 5. Install the guardrails hook:
    - Copy [block-dangerous-git.sh](./block-dangerous-git.sh) to the target hooks directory (`.claude/hooks/` for project scope, `~/.claude/hooks/` for global)
    - `chmod +x` the copied script
