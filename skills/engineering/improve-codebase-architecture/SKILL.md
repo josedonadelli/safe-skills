@@ -28,6 +28,8 @@ Key principles (see [LANGUAGE.md](LANGUAGE.md) for the full list):
 
 This skill is _informed_ by the project's domain model. The domain language gives names to good seams; ADRs record decisions the skill should not re-litigate.
 
+Before exploring, check `.workspace/agents/domain.md` for where the glossary and ADRs live. In NDA repos they are in `.workspace/context/CONTEXT.md` and `.workspace/adr/`; otherwise at `CONTEXT.md` and `docs/adr/` at the repo root.
+
 ## Process
 
 ### 1. Explore
