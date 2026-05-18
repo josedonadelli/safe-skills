@@ -17,11 +17,26 @@ If a question can be answered by exploring the codebase, explore the codebase in
 
 ## Domain awareness
 
-During codebase exploration, also look for existing documentation:
+During codebase exploration, also look for existing documentation.
+
+### Config lookup
+
+Check for `.workspace/agents/domain.md` first. If it exists, read and write domain docs in `.workspace/context/CONTEXT.md` and `.workspace/adr/`. Otherwise fall back to `CONTEXT.md` at the repo root and `docs/adr/`.
 
 ### File structure
 
-Most repos have a single context:
+**Workspace-first repos** (`.workspace/agents/` exists — NDA mode):
+
+```
+.workspace/
+├── context/
+│   └── CONTEXT.md
+└── adr/
+    ├── 0001-first-decision.md
+    └── 0002-second-decision.md
+```
+
+**Standard repos** (`docs/agents/` exists):
 
 ```
 /
@@ -33,23 +48,9 @@ Most repos have a single context:
 └── src/
 ```
 
-If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
+If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives.
 
-```
-/
-├── CONTEXT-MAP.md
-├── docs/
-│   └── adr/                          ← system-wide decisions
-├── src/
-│   ├── ordering/
-│   │   ├── CONTEXT.md
-│   │   └── docs/adr/                 ← context-specific decisions
-│   └── billing/
-│       ├── CONTEXT.md
-│       └── docs/adr/
-```
-
-Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create files lazily — only when you have something to write. If no `CONTEXT.md` equivalent exists, create one when the first term is resolved. If no `adr/` exists, create it when the first ADR is needed.
 
 ## During the session
 
@@ -71,9 +72,9 @@ When the user states how something works, check whether the code agrees. If you 
 
 ### Update CONTEXT.md inline
 
-When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+When a term is resolved, update the glossary right there — don't batch. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md). Write to whichever location the config lookup (above) determined: `.workspace/context/CONTEXT.md` or `CONTEXT.md` at root.
 
-`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+The glossary should be totally devoid of implementation details. Do not treat it as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
 
 ### Offer ADRs sparingly
 

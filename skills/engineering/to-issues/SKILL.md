@@ -7,7 +7,7 @@ description: Break a plan, spec, or PRD into independently-grabbable issues on t
 
 Break a plan into independently-grabbable issues using vertical slices (tracer bullets).
 
-The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills` if not.
+The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills-safe` if not. Config lives in `.workspace/agents/` (git-ignored); issues are written to `.workspace/issues/<feature>/`.
 
 ## Process
 

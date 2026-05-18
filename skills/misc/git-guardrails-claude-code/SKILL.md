@@ -14,6 +14,8 @@ Sets up a PreToolUse hook that intercepts and blocks dangerous git commands befo
 - `git clean -f` / `git clean -fd`
 - `git branch -D`
 - `git checkout .` / `git restore .`
+- `git add` — staging is reserved for the human
+- `git commit` — committing is reserved for the human (NDA policy: no AI traces in git history)
 
 When blocked, Claude sees a message telling it that it does not have authority to access these commands.
 
